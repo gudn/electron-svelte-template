@@ -31,8 +31,11 @@
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
+    "@storybook/addon-storysource": "^6.3.6",
     "@storybook/addon-svelte-csf": "^1.1.0",
+    "@storybook/addons": "^6.3.6",
     "@storybook/svelte": "^6.3.6",
+    "@storybook/theming": "^6.3.6",
     "@tsconfig/svelte": "^2.0.0",
     "@types/tap": "^15.0.5",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
@@ -93,7 +96,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,svelte}": [
+    "*.{js,ts,svelte}": [
       "prettier --write",
       "eslint --fix"
     ],
