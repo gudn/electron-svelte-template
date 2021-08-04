@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "main": "dist/main.js",
+  "license": "MIT",
   "scripts": {
     "build": "rollup -c",
     "rollup-watch": "rollup -c -w",
