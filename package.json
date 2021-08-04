@@ -1,17 +1,29 @@
 {
-  "name": "svelte-app",
+  "name": "electron-svelte-template",
   "version": "1.0.0",
   "private": true,
+  "main": "dist/main.js",
   "scripts": {
     "rollup-build": "rollup -c",
     "rollup-watch": "rollup -c -w",
-    "svelte-check": "svelte-check --tsconfig ./tsconfig.json"
+    "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
+    "start": "rollup -c && electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "clean": "rimraf ./dist ./public/dist"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.59",
+    "@electron-forge/maker-deb": "^6.0.0-beta.59",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.59",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
+    "@electron-forge/maker-zip": "^6.0.0-beta.59",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^2.0.0",
+    "electron": "^13.1.8",
+    "rimraf": "^3.0.2",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-svelte": "^7.0.0",
@@ -22,5 +34,34 @@
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "svelte_app"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
 }

@@ -8,36 +8,58 @@ import css from 'rollup-plugin-css-only'
 
 const production = !process.env.ROLLUP_WATCH
 
-export default {
-  input: 'src/svelte.ts',
-  output: {
-    sourcemap: true,
-    format: 'iife',
-    name: 'app',
-    file: 'public/dist/bundle.js',
-  },
-  plugins: [
-    svelte({
-      preprocess: sveltePreprocess({ sourceMap: !production }),
-      compilerOptions: {
-        dev: !production,
-      },
-    }),
-    css({ output: 'bundle.css' }),
+export default [
+  {
+    input: 'src/svelte.ts',
+    output: {
+      sourcemap: true,
+      format: 'iife',
+      name: 'app',
+      file: 'public/dist/bundle.js',
+    },
+    plugins: [
+      svelte({
+        preprocess: sveltePreprocess({ sourceMap: !production }),
+        compilerOptions: {
+          dev: !production,
+        },
+      }),
+      css({ output: 'bundle.css' }),
 
-    resolve({
-      browser: true,
-      dedupe: ['svelte'],
-    }),
-    commonjs(),
-    typescript({
-      sourceMap: !production,
-      inlineSources: !production,
-    }),
+      resolve({
+        browser: true,
+        dedupe: ['svelte'],
+      }),
+      commonjs(),
+      typescript({
+        sourceMap: !production,
+        inlineSources: !production,
+      }),
 
-    production && terser(),
-  ],
-  watch: {
-    clearScreen: false,
+      production && terser(),
+    ],
+    watch: {
+      clearScreen: false,
+    },
   },
-}
+  {
+    input: 'src/main.ts',
+    output: {
+      sourcemap: false,
+      format: 'cjs',
+      file: 'dist/main.js',
+    },
+    plugins: [
+      typescript({
+        sourceMap: false,
+        inlineSources: !production,
+      }),
+      resolve({
+        resolveOnly: [/^(?!electron).*$/]
+      }),
+      commonjs(),
+
+      production && terser(),
+    ],
+  },
+]
