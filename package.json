@@ -11,7 +11,9 @@
     "dev": "NODE_ENV=development concurrently -k \"npm:rollup-watch\" \"electron-forge start\"",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "clean": "rimraf ./dist ./public/dist"
+    "clean": "rimraf ./dist ./public/dist",
+    "lint": "eslint src",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.59",
@@ -23,9 +25,17 @@
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
     "concurrently": "^6.2.0",
     "electron": "^13.1.8",
     "electron-reload": "^2.0.0-alpha.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.1.1",
+    "prettier": "^2.3.2",
+    "prettier-plugin-svelte": "^2.3.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
@@ -66,5 +76,14 @@
         }
       ]
     }
+  },
+  "lint-staged": {
+    "*.{ts,svelte}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{html,css,scss}": [
+      "prettier --write"
+    ]
   }
 }
