@@ -4,10 +4,11 @@
   "private": true,
   "main": "dist/main.js",
   "scripts": {
-    "rollup-build": "rollup -c",
+    "build": "rollup -c",
     "rollup-watch": "rollup -c -w",
     "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
     "start": "rollup -c && electron-forge start",
+    "dev": "NODE_ENV=development concurrently -k \"npm:rollup-watch\" \"electron-forge start\"",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "clean": "rimraf ./dist ./public/dist"
@@ -22,7 +23,9 @@
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^2.0.0",
+    "concurrently": "^6.2.0",
     "electron": "^13.1.8",
+    "electron-reload": "^2.0.0-alpha.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
