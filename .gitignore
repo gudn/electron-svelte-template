@@ -5,5 +5,6 @@ dist/
 
 .log
 .projectile
+.nyc_output/
 
 out/

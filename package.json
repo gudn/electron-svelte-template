@@ -13,7 +13,8 @@
     "make": "electron-forge make",
     "clean": "rimraf ./dist ./public/dist",
     "lint": "eslint src",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "tap --ts"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.59",
@@ -25,6 +26,7 @@
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^2.0.0",
+    "@types/tap": "^15.0.5",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "concurrently": "^6.2.0",
@@ -44,8 +46,10 @@
     "svelte": "^3.0.0",
     "svelte-check": "^2.0.0",
     "svelte-preprocess": "^4.0.0",
+    "tap": "^15.0.9",
+    "ts-node": "^10.1.0",
     "tslib": "^2.0.0",
-    "typescript": "^4.0.0"
+    "typescript": "^4.3.5"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
@@ -85,5 +89,8 @@
     "*.{html,css,scss}": [
       "prettier --write"
     ]
+  },
+  "tap": {
+    "check-coverage": false
   }
 }
