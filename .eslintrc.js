@@ -15,6 +15,13 @@ module.exports = {
       files: ['*.svelte'],
       processor: 'svelte3/svelte3',
     },
+    {
+      files: ['rollup.config.js', '.eslintrc.js'],
+      parser: 'espree',
+      env: {
+        node: true,
+      },
+    },
   ],
   rules: {
     indent: ['warn', 2],
