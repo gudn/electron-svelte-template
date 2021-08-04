@@ -25,6 +25,7 @@ module.exports = {
     'comma-dangle': ['warn', 'always-multiline'],
   },
   settings: {
-    'svelte3/typescript': true, // load TypeScript as peer dependency
+    'svelte3/typescript': true,
+    'svelte3/ignore-styles': () => true,
   },
 }
