@@ -32,7 +32,7 @@ export default [
       }),
       commonjs(),
       typescript({
-        sourceMap: !production,
+        sourceMap: true,
         inlineSources: !production,
       }),
 
@@ -52,10 +52,10 @@ export default [
     plugins: [
       typescript({
         sourceMap: false,
-        inlineSources: !production,
+        inlineSources: false,
       }),
       resolve({
-        resolveOnly: [/^(?!electron).*$/]
+        resolveOnly: [/^(?!electron).*$/],
       }),
       commonjs(),
 
